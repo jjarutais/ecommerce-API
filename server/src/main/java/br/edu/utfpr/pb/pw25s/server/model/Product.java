@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+//Produto = {id: Long, nome: String, descricao: String,
+//preço: BigDecimal, urlImagem: String, categoriaId: Long}
+
 @Entity
 @Table(name = "tb_product")
 @NoArgsConstructor
@@ -23,6 +26,8 @@ public class Product {
     private String description;
 
     private BigDecimal price;
+
+    //URL IMAGEM
 
     @ManyToOne
     @JoinColumn(name = "category_id")

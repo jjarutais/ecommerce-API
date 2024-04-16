@@ -13,6 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+//Usuário = {id: Long, nome: String, senha: String}
+
 @Entity
 @Table(name = "tb_user")
 @Getter

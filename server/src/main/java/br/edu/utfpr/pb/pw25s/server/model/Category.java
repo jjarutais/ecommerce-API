@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+//Categoria = {id: Long, nome: String}
+
 @Entity
 @Table(name = "tb_category")
 @Getter
