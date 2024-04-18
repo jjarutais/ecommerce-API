@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("orders")
+@RequestMapping("orders-products")
 public class OrderProductController extends CrudController<OrderProduct, OrderProductDto, Long>{
 
     private final IOrderProductService service;
