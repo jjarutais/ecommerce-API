@@ -1,34 +1,31 @@
 package br.edu.utfpr.pb.pw25s.server.controller;
 
-import br.edu.utfpr.pb.pw25s.server.dto.CategoryDto;
 import br.edu.utfpr.pb.pw25s.server.dto.OrderDto;
-import br.edu.utfpr.pb.pw25s.server.dto.ProductDto;
-import br.edu.utfpr.pb.pw25s.server.model.Category;
+import br.edu.utfpr.pb.pw25s.server.dto.OrderProductDto;
 import br.edu.utfpr.pb.pw25s.server.model.Order;
-import br.edu.utfpr.pb.pw25s.server.model.Product;
-import br.edu.utfpr.pb.pw25s.server.service.ICategoryService;
+import br.edu.utfpr.pb.pw25s.server.model.OrderProduct;
 import br.edu.utfpr.pb.pw25s.server.service.ICrudService;
+import br.edu.utfpr.pb.pw25s.server.service.IOrderProductService;
 import br.edu.utfpr.pb.pw25s.server.service.IOrderService;
-import br.edu.utfpr.pb.pw25s.server.service.IProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("orders")
-public class OrderController extends CrudController<Order, OrderDto, Long>{
+public class OrderProductController extends CrudController<OrderProduct, OrderProductDto, Long>{
 
-    private final IOrderService service;
+    private final IOrderProductService service;
     private final ModelMapper modelMapper;
 
-    public OrderController(IOrderService service, ModelMapper modelMapper) {
-        super(Order.class, OrderDto.class);
+    public OrderProductController(IOrderProductService service, ModelMapper modelMapper) {
+        super(OrderProduct.class, OrderProductDto.class);
         this.service = service;
         this.modelMapper = modelMapper;
     }
 
     @Override
-    protected ICrudService<Order, Long> getService() {
+    protected ICrudService<OrderProduct, Long> getService() {
         return service;
     }
 
