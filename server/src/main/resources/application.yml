@@ -19,3 +19,8 @@ spring:
       on-profile: dev
   datasource:
     url: jdbc:h2:mem:pw25s-dev
+
+---
+spring:
+  jackson:
+    date-format: dd/MM/yyyy

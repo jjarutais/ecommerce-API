@@ -17,7 +17,7 @@ public class OrderDto {
 
     private Long id;
 
-    private Date data;
+    private Date date;
 
     private UserDto user;
 }
