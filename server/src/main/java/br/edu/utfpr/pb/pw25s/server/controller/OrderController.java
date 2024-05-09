@@ -11,6 +11,10 @@ import br.edu.utfpr.pb.pw25s.server.service.ICrudService;
 import br.edu.utfpr.pb.pw25s.server.service.IOrderService;
 import br.edu.utfpr.pb.pw25s.server.service.IProductService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +39,14 @@ public class OrderController extends CrudController<Order, OrderDto, Long>{
     @Override
     protected ModelMapper getModelMapper() {
         return modelMapper;
+    }
+
+    @PostMapping
+    public ResponseEntity saveOrder(@RequestBody OrderDto orderDto){
+
+        SecurityContextHolder.getContext().setAuthentication();
+        Order order = new Order();
+        //usuario que está logado (autenticado)
+        order.setUser();
     }
 }

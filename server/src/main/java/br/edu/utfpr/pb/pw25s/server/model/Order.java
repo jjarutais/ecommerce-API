@@ -3,6 +3,7 @@ package br.edu.utfpr.pb.pw25s.server.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 //Pedido = {id: Long, data: DateTime, usuarioId: Long}
@@ -20,7 +21,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Date date;
+    private String paymentMethod;
+
+    private LocalDateTime date;
 
     @ManyToOne
     @JoinColumn(name="user_id")

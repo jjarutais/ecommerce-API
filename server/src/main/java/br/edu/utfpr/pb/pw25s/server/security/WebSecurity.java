@@ -57,6 +57,7 @@ public class WebSecurity {
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers(HttpMethod.POST, "/users/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/users/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
                 .anyRequest().authenticated()
