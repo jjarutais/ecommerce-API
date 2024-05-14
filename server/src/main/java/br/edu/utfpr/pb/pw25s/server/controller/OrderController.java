@@ -41,12 +41,12 @@ public class OrderController extends CrudController<Order, OrderDto, Long>{
         return modelMapper;
     }
 
-    @PostMapping
-    public ResponseEntity saveOrder(@RequestBody OrderDto orderDto){
-
-        SecurityContextHolder.getContext().setAuthentication();
-        Order order = new Order();
-        //usuario que está logado (autenticado)
-        order.setUser();
-    }
+//    @PostMapping
+//    public ResponseEntity saveOrder(@RequestBody OrderDto orderDto){
+//
+//        SecurityContextHolder.getContext().setAuthentication();
+//        Order order = new Order();
+//        //usuario que está logado (autenticado)
+//        order.setUser();
+//    }
 }
