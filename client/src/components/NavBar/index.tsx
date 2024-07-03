@@ -1,12 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "@/assets/utfpr-logo.png";
-import AuthService from "@/service/AuthService";
 
 export function NavBar() {
-  const onClickLogout = () => {
-    AuthService.logout();
-    window.location.reload();
-  };
 
   return (
     <div className="bg-white shadow-sm mb-2">
@@ -26,7 +21,7 @@ export function NavBar() {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink
                 to="/categories"
                 className={(navData) =>
@@ -35,7 +30,7 @@ export function NavBar() {
               >
                 Categorias
               </NavLink>
-            </li>
+            </li> */}
             <li className="nav-item">
               <NavLink
                 to="/products"
@@ -46,22 +41,15 @@ export function NavBar() {
                 Produtos
               </NavLink>
             </li>
-
             <li className="nav-item">
               <NavLink
-                to="/products-v2"
+                to="/cart"
                 className={(navData) =>
                   navData.isActive ? "nav-link active" : "nav-link"
                 }
               >
-                Produtos V2
+                Carrinho
               </NavLink>
-            </li>
-
-            <li className="nav-item">
-              <button className="btn btn-light" onClick={onClickLogout}>
-                &times; Sair
-              </button>
             </li>
           </ul>
         </nav>

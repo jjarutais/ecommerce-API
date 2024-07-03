@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Builder
 public class ProductDto {
 
-    private int id;
+    private Long id;
 
     @NotNull
     @Size(min = 2, max = 50)
@@ -26,5 +26,7 @@ public class ProductDto {
     private BigDecimal price;
 
     private CategoryDto category;
+
+    private String image;
 
 }

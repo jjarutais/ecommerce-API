@@ -17,7 +17,7 @@ const findAll = async (): Promise<any> => {
   let response;
   try {
     response = await api.get(productURL);
-  } catch (err: any) {
+  } catch (err: any) {  
     response = err.response;
   }
   return response;

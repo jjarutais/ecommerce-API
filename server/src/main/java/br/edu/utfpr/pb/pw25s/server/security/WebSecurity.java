@@ -49,7 +49,7 @@ public class WebSecurity {
 
         // Configuração para o h2 funcionar com o Spring Security
         http.headers( headers ->
-            headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
+                headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
         http.csrf(AbstractHttpConfigurer::disable);
 
@@ -57,15 +57,18 @@ public class WebSecurity {
                 exceptionHandling.authenticationEntryPoint(
                         authenticationEntryPoint));
 
-       // http.cors(AbstractHttpConfigurer::disable);
+        // http.cors(AbstractHttpConfigurer::disable);
         http.cors(cors -> corsConfigurationSource());
 
         http.authorizeHttpRequests((authorize) -> authorize
                 .requestMatchers(HttpMethod.POST, "/users/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
-                .requestMatchers("/users/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/categories/**").permitAll()
+//                .requestMatchers(HttpMethod.GET, "/orders/**").permitAll()
+//                .requestMatchers(HttpMethod.POST, "/orders/**").permitAll()
+//                .requestMatchers(HttpMethod.GET, "/orders-products/**").permitAll()
+//                .requestMatchers(HttpMethod.POST, "/orders-products/**").permitAll()
                 .anyRequest().authenticated()
         );
 
@@ -81,8 +84,8 @@ public class WebSecurity {
                                 authService)
                 )
                 .sessionManagement(sessionManagement ->
-                    sessionManagement.sessionCreationPolicy(
-                            SessionCreationPolicy.STATELESS)
+                        sessionManagement.sessionCreationPolicy(
+                                SessionCreationPolicy.STATELESS)
                 );
 
         return http.build();
@@ -113,4 +116,3 @@ public class WebSecurity {
     }
 
 }
-

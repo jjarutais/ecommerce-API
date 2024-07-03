@@ -1,29 +1,32 @@
+import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "@/pages/LoginPage";
 import { UserSignupPage } from "@/pages/UserSignupPage";
-import { Route, Routes } from "react-router-dom";
-import { AuthenticatedRoutes } from "../AuthenticatedRoutes";
 import { HomePage } from "@/pages/HomePage";
-import { CategoryListPage } from "@/pages/CategoryListPage";
-import { CategoryFormPage } from "@/pages/CategoryFormPage";
+import { ProductDetailsPage } from "@/pages/ProductDetailsPage";
+import { ProductsPage } from "@/pages/ProductsPage";
+import CartPage from "@/pages/CartPage";
+import CheckoutPage from "@/pages/CheckoutPage";
+import UserOrdersPage from "@/pages/UserOrdersPage";
 
 export function BaseRoutes() {
-  return (
-    <>
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<UserSignupPage />} />
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/home" element={<HomePage />} />
 
-        {/* Private Routes */}
-        <Route element={<AuthenticatedRoutes />}>
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/categories" element={<CategoryListPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<UserSignupPage />} />
 
-            <Route path="/categories/new" element={<CategoryFormPage />} />
-            <Route path="/categories/:id" element={<CategoryFormPage />} />
-        </Route>
-      </Routes>
-    </>
-  );
+                <Route path="/products" element={<ProductsPage />} />
+                <Route path="/products/:productId" element={<ProductDetailsPage />} />
+
+                <Route path="/cart" element={<CartPage />} />
+
+                <Route path="/checkout" element={<CheckoutPage />} />
+
+                <Route path="/orders" element={<UserOrdersPage />} />
+            </Routes>
+        </>
+    );
 }
