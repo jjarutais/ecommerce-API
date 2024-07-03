@@ -25,7 +25,6 @@ const placeOrder = async (paymentMethod: string, items: ICartItem[]): Promise<an
         });
         return response.data;
     } catch (error) {
-        console.error('Error placing order:', error);
         throw error;
     }
 };

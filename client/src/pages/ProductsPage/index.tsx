@@ -13,7 +13,6 @@ export function ProductsPage() {
       const { data } = await ProductService.findAll();
       setProducts(data);
     } catch (error) {
-      console.error("Error fetching products:", error);
       setProducts([]);
     }
   };

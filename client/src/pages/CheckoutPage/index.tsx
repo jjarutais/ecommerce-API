@@ -4,6 +4,9 @@ import CartService from '@/service/CartService';
 import OrderService from '@/service/OrderService';
 import { NavBar } from '@/components/NavBar';
 import Footer from '@/components/Footer';
+import Swal from 'sweetalert2';
+import compraFinalizada from "@/assets/compra-finalizada.png";
+
 
 const CheckoutPage: React.FC = () => {
     const [paymentMethod, setPaymentMethod] = useState('');
@@ -20,19 +23,44 @@ const CheckoutPage: React.FC = () => {
 
     const handleCheckout = async () => {
         if (!paymentMethod) {
-            alert('Please select a payment method.');
+            await Swal.fire({
+                icon: 'warning',
+                title: 'Selecione um método de pagamento',
+                text: 'Por favor, escolha um método de pagamento antes de finalizar sua compra.',
+                confirmButtonText: 'OK',
+            });
             return;
         }
 
         try {
             await OrderService.placeOrder(paymentMethod, cartItems);
             CartService.clearCart();
-            navigate('/orders');
+
+            const result = await Swal.fire({
+
+                title: 'Compra realizada com sucesso!',
+                text: 'O que você deseja fazer em seguida?',
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonText: 'Voltar à página de produtos',
+                cancelButtonText: 'Fazer logoff',
+                html: `<img src="${compraFinalizada}" style="max-width: 200%; height: auto; width: 500px;" />`,
+            });
+
+            if (result.isConfirmed) {
+                navigate('/products');
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                navigate('/home');
+                CartService.clearToken();
+            }
         } catch (error) {
-            console.error('Error placing order:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Houve um erro ao processar seu pedido. Por favor, tente novamente mais tarde.',
+            });
         }
     };
-
 
     return (
         <>

@@ -71,6 +71,8 @@ public class OrderServiceImpl extends CrudServiceImpl<Order, Long> implements IO
             BigDecimal price = product.getPrice().multiply(BigDecimal.valueOf(itemDto.getQuantity()));
             orderProduct.setPrice(price);
 
+            orderProduct.setQuantity(itemDto.getQuantity());
+            
             return orderProduct;
         }).collect(Collectors.toList());
 

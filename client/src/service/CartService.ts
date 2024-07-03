@@ -1,4 +1,4 @@
-import { ICartItem, ICartState, ICartAction } from '@/commons/interfaces';
+import { ICartItem, ICartState } from '@/commons/interfaces';
 
 class CartService {
   private static instance: CartService;
@@ -23,6 +23,12 @@ class CartService {
   public clearCart(): void {
     this.cartState = { items: [] };
     localStorage.removeItem('cart');
+  }
+
+  public clearToken(): void {
+    this.cartState = { items: [] };
+    localStorage.removeItem('cart');
+    localStorage.removeItem('token');
   }
 
   public getCartState(): ICartState {

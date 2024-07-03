@@ -23,6 +23,10 @@ export interface IProduct {
   image: string;
 }
 
+export interface IUser {
+  name: string;
+}
+
 export interface ICartItem {
   id: number;
   name: string;
@@ -32,9 +36,4 @@ export interface ICartItem {
 }
 export interface ICartState {
     items: ICartItem[];
-}
-
-export interface ICartAction {
-    type: 'ADD_ITEM' | 'REMOVE_ITEM' | 'UPDATE_QUANTITY';
-    payload: ICartItem;
 }

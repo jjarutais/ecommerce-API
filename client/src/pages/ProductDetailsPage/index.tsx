@@ -27,7 +27,7 @@ export function ProductDetailsPage() {
             setProduct(data);
             setLoading(false);
         } catch (error) {
-            console.error("Error fetching product:", error);
+            
             setError("Error fetching product. Please try again later.");
             setLoading(false);
         }

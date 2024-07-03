@@ -38,7 +38,6 @@ public class UserControllerTest {
         testRestTemplate.getRestTemplate().getInterceptors().clear();
     }
 
-    // methodName_condition_expectedBehaviour
     @Test
     @DisplayName("Post a new User when the User is valid receive a 200 Ok")
     public void postUser_whenUserIsValid_receiveOk() {
