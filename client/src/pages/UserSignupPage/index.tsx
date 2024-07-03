@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Input } from "@/components/Input";
-import { api } from "@/lib/axios";
 import AuthService from "../../service/AuthService";
 import { IUserSignup } from "../../commons/interfaces";
 
@@ -96,7 +95,7 @@ export function UserSignupPage() {
             id="password"
             name="password"
             label="Informe a sua senha:"
-            type="text"
+            type="password"
             value={form.password}
             placeholder="Informe a sua senha"
             hasError={errors.password ? true : false}

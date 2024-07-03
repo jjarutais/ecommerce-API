@@ -31,12 +31,12 @@ export function LoginPage() {
 
     const response = await AuthService.login(login);
     if (response.status === 200 || response.status === 201) {
-      setApiSuccess("Cadastro realizado com sucesso!");
+      setApiSuccess("Usuário autenticado com sucesso!");
       setTimeout(() => {
         navigate("/home");
       }, 1000);
     } else {
-      setApiError("Erro ao cadastrar o usuário!");
+      setApiError("Erro ao autenticar o usuário!");
     }
 
     setPendingApiCall(false);
@@ -88,7 +88,7 @@ export function LoginPage() {
                 role="status"
               ></div>
             )}
-            Cadastrar
+            Login
           </button>
         </div>
         <div className="text-center">

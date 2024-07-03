@@ -27,12 +27,9 @@ public class Product {
 
     private BigDecimal price;
 
-    //URL IMAGEM
+    private String image;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 }
-
-
-
